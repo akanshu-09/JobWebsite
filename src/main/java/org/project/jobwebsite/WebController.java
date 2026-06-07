@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -32,10 +34,17 @@ public class WebController
         return "success";
     }
     @GetMapping("viewalljobs")
-    public String getjobs(Model m)
+    public String getjobs(@RequestParam(required = false) String keyword, Model m)
     {
-        List<JobPost> jobs = service.getalljobs();
+        List<JobPost> jobs = service.filtersearch(keyword);
         m.addAttribute("jobPosts",jobs);
         return "viewalljobs";
     }
+    @GetMapping("deletejob/{id}")
+    public String deletejob(@PathVariable int id)
+    {
+        service.deletejob(id);
+        return "redirect:/viewalljobs";
+    }
+
 }

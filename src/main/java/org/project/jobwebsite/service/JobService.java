@@ -20,4 +20,15 @@ public class JobService
     {
         return repo.findAll();
     }
+    public void deletejob(int id)
+    {
+        repo.deleteById(id);
+    }
+    public List<JobPost> filtersearch(String keyword)
+    {
+        if (keyword != null && !keyword.isEmpty()) {
+            return repo.findByPostProfileContainingIgnoreCase(keyword);
+        }
+        else return repo.findAll();
+    }
 }

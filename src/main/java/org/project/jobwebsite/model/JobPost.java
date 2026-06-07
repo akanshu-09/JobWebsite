@@ -16,10 +16,10 @@ public class JobPost
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int PostId;
-    private String PostProfile;
-    private String PostDesc;
-    private int ReqExperience;
+    private int postId;
+    private String postProfile;
+    private String postDesc;
+    private int reqExperience;
     @ElementCollection
     private List<String> PostTechStack;
 }
