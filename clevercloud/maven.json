@@ -4,6 +4,6 @@
     "goal": "package -DskipTests"
   },
   "deploy": {
-    "jarName": "jobwebsite-0.0.1-SNAPSHOT.war"
+    "jarName": "target/jobwebsite-0.0.1-SNAPSHOT.war"
   }
 }
